@@ -1,0 +1,225 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: Roboto,Helvetica Neue,Arial,Helvetica,sans-serif;
+    color: white;
+    
+}
+h1                                  /*Настройки для шрифтов*/
+{
+    font-size: 3vw;
+}
+h2
+{
+    font-size: 2.5vw;
+}
+h3
+{
+    font-size: 2vw;
+}
+p, a, li, label
+{
+    font-size: 1.5vw;
+}
+html
+{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    overflow-x:  hidden;
+}
+
+main
+{
+    background-color: #1b1a1f;
+}
+
+input 
+{
+    color: black;
+}
+
+input[type="submit"]                /*Настройки кнопки */
+{
+    color: white; 
+    background: red; 
+    border: none; 
+    padding: 5px; 
+    border-radius: 5px;
+}
+a
+{
+    text-decoration: none;
+}
+label
+{
+    text-decoration: underline;
+}
+a:hover, #logo:hover, input[type="submit"]:hover
+{
+    cursor: pointer;
+    opacity: 0.8;
+}
+h2
+{
+    padding: 10px;
+}
+form
+{
+    padding: 20px;
+}
+#rocket /*Настройки кнопки для поднятия на начало страницы*/
+{
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+}
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    min-height: fit-content;
+
+}
+#logo
+{
+    width: 50px;
+    filter: invert();
+    cursor: pointer;
+}
+header > div
+{
+    padding: 10px 20px 10px 20px;
+}
+#startimg
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: fit-content;
+    background: url(https://www.iphones.ru/wp-content/uploads/2016/04/08.jpg) no-repeat 75%;
+    background-size: cover;
+ 
+}
+#startimg div
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+}
+.block
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #1b1a1f;
+    height: fit-content;
+    min-height: 100vh;
+    /* border: 1px black solid; */
+    padding: 20px;
+}
+
+.block > div
+{
+    padding: 10px;
+}
+#info
+{
+    background: linear-gradient(#1b1a1f,#000000);
+    height: fit-content;
+    padding: 20px;
+}
+
+footer
+{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    padding: 5px;
+}
+footer > div
+{
+    padding-bottom: 10px;
+}
+.flex
+{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.flex div 
+{
+    padding: 10px;
+}
+/*Слайдер через анимацию*/
+@keyframes slider 
+{
+    0% {
+        background: url(one.png) no-repeat center;
+        background-size: contain;
+    }
+
+    50% {
+        background: url(to.png) no-repeat center;
+        background-size: contain;
+    }
+
+    100% {
+        background: url(three.png) no-repeat center;
+        background-size: contain;
+    }
+}
+
+#slider
+{
+    animation: slider 7s linear infinite alternate;
+    height: 50vh;
+    width: 50vw;
+}
+#teleph{
+    font-size: 12px;
+}
+/*настройки для осуществления переключаемого списка*/
+#r1:checked ~ #shih, #r1:checked ~#elec, #r1:checked ~#seek{
+    display: block;
+}
+#r2:checked ~ #shih{
+    display: block;
+}
+#r2:checked ~ #elec, #r2:checked ~ #seek{
+    display: none;
+}
+#r3:checked ~ #elec{
+    display: block;
+}
+#r3:checked ~ #shih, #r3:checked ~ #seek{
+    display: none;
+}
+#r4:checked ~ #seek{
+    display: block;
+}
+#r4:checked ~ #shih, #r4:checked ~ #elec{
+    display: none;
+}
+input[type='radio']{
+    display: none;
+}
+label:hover{
+    opacity: 0.7;
+    cursor:pointer;
+}
+.good
+{
+    width: 100%;
+    padding-bottom: 20px;
+}
