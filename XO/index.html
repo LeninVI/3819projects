@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#field td {
+		width: 100px;
+		height: 100px;
+		border: 1px solid black;
+		text-align: center;
+		font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<table id="field">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	</table>
+	<script>
+	function start(cells) { //функция по проставлению крестиков и ноликов в зависимости от клика
+	let i = 0;	//счётчик
+	for (let cell of cells) { //цикл на все элементы в cells 
+		cell.addEventListener('click', function step() { //По нажатию на cell выполнять функцию step
+			if (i % 2 == 0) {
+				this.innerHTML = 'X';//ход крестика
+			} else {
+				this.innerHTML = '0';//ход нолика
+			}
+			this.removeEventListener('click', step);//после нажатия на cell на него более нельзя нажимать			
+			if (isVictory(cells)) {
+				alert("Победили "+this.innerHTML); // выводим имя победителя
+                window.location.reload()
+			}
+			else if (i == 8) {
+				alert('ничья');
+                window.location.reload()
+			}			
+			i++;
+		});
+	}
+	}
+	function isVictory(cells) {//функция на проверку комбинации для победы
+	let combs = [
+		[0, 1, 2],
+		[3, 4, 5],
+		[6, 7, 8],
+		[0, 3, 6],
+		[1, 4, 7],
+		[2, 5, 8],
+		[0, 4, 8],
+		[2, 4, 6]
+	];
+	for (let comb of combs) {//провека элементов массива
+		if (
+			cells[comb[0]].innerHTML == cells[comb[1]].innerHTML &&
+			cells[comb[1]].innerHTML == cells[comb[2]].innerHTML &&
+			cells[comb[0]].innerHTML != ''
+		) {
+			return true;
+		}
+	}
+	return false;
+	}
+	let cells = document.querySelectorAll('#field td')//В cells хранятся все td, что пренадлежать #field
+	start(cells)	
+	</script>
+</body>
+</html>
