@@ -24,14 +24,25 @@
 		.active {
 			background: red;
 		}
+		#times{
+			border: 1px black solid;
+			display: flex;
+			width: fit-content;
+		}
 		</style>
 	</head>
-	<body>
+	<body onload='ticktak()'>
 		<div>
 			<table id="field"></table>
 		</div>
-		
+		<div id="times">
+			<div id="hour"></div>
+			<div id="dots">:</div>
+			<div id='timer'></div>
+		</div>
 		<script>
+		let min = 0;
+		let sec = 0;
 		function start(size) {
 			activate(build(field, prepare(size)), size);//стартовая функция объединяющая в себя постройку сетки
 		}
@@ -65,6 +76,9 @@
 						this.classList.add('active');				
 						if (counter == size * size) {
 							start(++size);//увеличение размеров сетки
+							alert("Поздравляю! Вы справились за "+min+":"+sec+'!')
+							sec=0;
+							min=0;
 						}
 						counter++;
 					}
@@ -112,6 +126,27 @@
 		function getRandomInt(min, max) {//функция на случайную расстановку чисел между клетками
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		}
+		function ticktak()
+            {
+                setInterval(tick, 1000);
+            }
+            document.getElementById('hour').innerHTML=0
+			document.getElementById("timer").innerHTML=0
+            function tick()
+            {
+                sec++;
+                document.getElementById("timer").innerHTML=sec
+				if(sec>59){
+					sec=0;
+					min=1
+					document.getElementById('hour').innerHTML=min
+				}
+				if(min>=60){
+					
+					alert('вы не справились с легчайшим заданием для дошкольников за час!Вполне возможно, что вы программист на питоне!')
+					window.location.reload()
+				}
+            }
 		</script>
 </body>
 </html>
