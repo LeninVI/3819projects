@@ -49,7 +49,7 @@
 
 		let field = document.querySelector('#field');//все #field 
 
-		start(2);//передача в функцию старт значения 2
+		start(3);//передача в функцию старт значения 2
 				
 		function build(field, arr) {//функция по постройке сетки
 			field.innerHTML = '';//Создание пустого поля 
@@ -96,7 +96,8 @@
 		
 		function range(count) {//функция на забрасывание в массив всех значений клеточек
 			let arr = [];
-			for (let i = 1; i <= count; i++) {
+			for (let i = 1; i <= count; i++)
+			{
 				arr.push(i);
 			}
 			return arr;
@@ -126,7 +127,7 @@
 		function getRandomInt(min, max) {//функция на случайную расстановку чисел между клетками
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		}
-		function ticktak()
+		function ticktak()//секундомер, который работает на принципе-1000тиков=1 секунда.
             {
                 setInterval(tick, 1000);
             }
@@ -137,8 +138,8 @@
                 sec++;
                 document.getElementById("timer").innerHTML=sec
 				if(sec>59){
-					sec=0;
-					min=1
+					document.getElementById("timer").innerHTML=0;
+					min+=1;
 					document.getElementById('hour').innerHTML=min
 				}
 				if(min>=60){
