@@ -5,26 +5,32 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<style>
-			body {
+		body 
+		{
 			height: 300px;
 		}
 		</style>
 		<style>
-			#parent {
+		#parent 
+		{
 			text-align: center;
 		}
-		#field {
+		#field 
+		{
 			display: inline-block;
 		}		
-		#field td {
+		#field td 
+		{
 			padding: 20px;
 			border: 1px solid black;
 			cursor: pointer;
 		}
-		.active {
+		.active 
+		{
 			background: red;
 		}
-		#times{
+		#times
+		{
 			border: 1px black solid;
 			display: flex;
 			width: fit-content;
@@ -44,19 +50,21 @@
 		let min = 0;
 		let sec = 0;
 		function start(size) {
-			activate(build(field, prepare(size)), size);//стартовая функция объединяющая в себя постройку сетки
+			activate(build(field, ready(size)), size);//стартовая функция объединяющая в себя постройку сетки
 		}
 
 		let field = document.querySelector('#field');//все #field 
 
-		start(3);//передача в функцию старт значения 2
+		start(3);//Передача стартового размера поля(меняется по желанию)
 				
 		function build(field, arr) {//функция по постройке сетки
 			field.innerHTML = '';//Создание пустого поля 
 			let cells = [];			
-			for (let sub of arr) {//стандартный цикл по работе с матрицами
+			for (let sub of arr) 
+			{//стандартный цикл по работе с матрицами
 				let tr = document.createElement('tr');				
-				for (let num of sub) {
+				for (let num of sub) 
+				{
 					let td = document.createElement('td');
 					td.innerHTML = num;//задаём клеточке num
 					tr.appendChild(td);//добавляем клеточку
@@ -68,13 +76,17 @@
 			return cells;
 		}
 		
-		function activate(cells, size) {
+		function activate(cells, size) 
+		{
 			let counter = 1;			//число, которое мы должны нажать в данный момент
 			for (let cell of cells) {
-				cell.addEventListener('click', function() {//по нажатию активизируется функция
-					if (this.innerHTML == counter) {//если значение нажатой клетки равно той клетке, которую надо нажать, то задаётся клетке задаётся класс active для смены цвета
+				cell.addEventListener('click', function() 
+				{//по нажатию активизируется функция
+					if (this.innerHTML == counter) 
+					{//если значение нажатой клетки равно той клетке, которую надо нажать, то задаётся клетке задаётся класс active для смены цвета
 						this.classList.add('active');				
-						if (counter == size * size) {
+						if (counter == size * size) 
+						{
 							start(++size);//увеличение размеров сетки
 							alert("Поздравляю! Вы справились за "+min+":"+sec+'!')
 							sec=0;
@@ -86,7 +98,7 @@
 			}
 		}
 		
-		function prepare(size) {
+		function ready(size) {
 			let arr = [];
 			arr = range(size * size);
 			arr = shuffle(arr);
